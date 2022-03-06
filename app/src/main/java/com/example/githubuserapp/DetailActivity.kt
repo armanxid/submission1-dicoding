@@ -7,12 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 
 class DetailActivity : AppCompatActivity() {
+
+    companion object {
+        const val EXTRA_DATA = "DATA"
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val data = intent.getParcelableExtra<User>("DATA")
-        Log.d("detail data", data?.company.toString())
+        val data = intent.getParcelableExtra<User>(EXTRA_DATA) as User
+        Log.d("detail data", data.company)
 
         val tvName: TextView = findViewById(R.id.tv_detail_name)
         val tvUsername: TextView = findViewById(R.id.tv_detail_username)
@@ -23,13 +27,13 @@ class DetailActivity : AppCompatActivity() {
         val tvFollowing: TextView = findViewById(R.id.tv_detail_following)
         val tvFollowers: TextView = findViewById(R.id.tv_detail_followers)
 
-        tvName.text = data?.name.toString()
-        tvUsername.text = data?.username.toString()
-        data?.avatar?.let { imgAvatar.setImageResource(it) }
-        tvCompany.text = data?.company.toString()
-        tvLocation.text = data?.location.toString()
-        tvRepository.text = data?.repository.toString()
-        tvFollowing.text = data?.following.toString()
-        tvFollowers.text = data?.followers.toString()
+        tvName.text = data.name
+        tvUsername.text = data.username
+        data.avatar.let { imgAvatar.setImageResource(it) }
+        tvCompany.text = data.company
+        tvLocation.text = data.location
+        tvRepository.text = data.repository
+        tvFollowing.text = data.following
+        tvFollowers.text = data.followers
     }
 }

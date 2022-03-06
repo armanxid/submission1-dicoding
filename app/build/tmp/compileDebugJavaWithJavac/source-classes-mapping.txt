@@ -1,0 +1,2 @@
+com/example/githubuserapp/BuildConfig.java
+ com.example.githubuserapp.BuildConfig

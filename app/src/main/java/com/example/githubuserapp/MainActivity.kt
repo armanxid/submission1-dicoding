@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var rvUsers : RecyclerView
+    private lateinit var rvUsers: RecyclerView
     private val list = ArrayList<User>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +36,19 @@ class MainActivity : AppCompatActivity() {
             val dataFollowers = resources.getStringArray(R.array.followers)
             val listUser = ArrayList<User>()
             for (i in dataName.indices) {
-                val user = User(dataUsername[i], dataName[i], dataAvatar.getResourceId(i, -1), dataCompany[i], dataLocation[i], dataRepository[i], dataFollowing[i], dataFollowers[i])
+                val user = User(
+                    dataUsername[i],
+                    dataName[i],
+                    dataAvatar.getResourceId(i, -1),
+                    dataCompany[i],
+                    dataLocation[i],
+                    dataRepository[i],
+                    dataFollowing[i],
+                    dataFollowers[i]
+                )
                 listUser.add(user)
             }
+            dataAvatar.recycle()
             return listUser
         }
 
